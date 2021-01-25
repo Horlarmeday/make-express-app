@@ -1,11 +1,11 @@
 {
-  "name": "@horlarmeday/create-express-app",
+  "name": "@horlarmeday/make-express-app",
   "version": "1.0.0",
   "description": "A CLI to bootstrap well structured express project",
   "main": "src/index.js",
   "bin": {
-    "@horlarmeday/create-express-app": "bin/create-express-app",
-    "create-express-app": "bin/create-express-app"
+    "@horlarmeday/make-express-app": "bin/make-express-app",
+    "make-express-app": "bin/make-express-app"
   },
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
   },
   "keywords": [
     "cli",
-    "create-express-app",
+    "make-express-app",
     "express"
   ],
   "author": "Mahmud Ajao",

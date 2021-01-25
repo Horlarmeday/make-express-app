@@ -1,15 +1,13 @@
-# Create Express App
+# Make Express App
 
-Create express app is a CLI to bootstrap new express projects.
+Make express app is a CLI to bootstrap new express projects.
 
 ## Installation
 
 ```bash
-npm init express-app
-# or
-npm install -g create-express-app
+npm install -g make-express-app
 # or 
-npx create-express-app
+npx make-express-app
 ```
 
 ## Creating an App
@@ -20,33 +18,26 @@ To create a new app, you may choose one of the following methods:
 #### npx
 
 ```bash
-npx create-express-app -n my-app
+npx make-express-app -n my-app
 ```
 _where `my-app` is the name of your project_
+
+__note: there should no space in your project name__
 
 After running this command, you will be prompted for some more questions, just follow it to the end, a `my-app` directory will be created 
 inside the current folder. Inside that directory contains the initial project structure.
 
-
-#### npm
-
-```bash
-npm init express-app -n my-app
-```
-
 #### Global Installation
-If you installed globally i.e you ran `npm install -g create-express-app`. To create a new project run the command below
+If you installed globally i.e you ran `npm install -g make-express-app`. To create a new project run the command below
 ```bash
-create-express-app -n my-app
+make-express-app -n my-app
 ```
 
 To skip all prompts and go for defaults options, run the command below.
 ```bash
-create-express-app --yes
+make-express-app --yes
 # or 
-npx create-express-app --yes
-# or
-npm init express-app --yes
+npx make-express-app --yes
 ```
 _`-y` can be used in place of `--yes`_
 
