@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  mongo:
+    image: mongo:4.0-xenial
+    logging:
+      driver: none
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'sailmongo:/var/lib/mongo'
+    networks:
+      - sail
+    restart: always
+  mysql:
+    image: mysql:8.0
+    logging:
+      driver: none
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_NAME}'
+      MYSQL_USER: '${DB_USER}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - '4000:3306'
+    expose:
+      - 4000
+    volumes:
+      - 'sailmysql:/var/lib/mysql'
+    networks:
+      - sail
+    restart: always
+networks:
+  sail:
+    driver: bridge
+volumes:
+  sailmysql:
+    driver: local
+  sailmongo:
+    driver: local

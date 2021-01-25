@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  mongo:
+    image: mongo:4.0-xenial
+    logging:
+      driver: none
+    ports: 
+      - '27017:27017'
+    volumes:
+      - 'sailmongo:/var/lib/mongo'
+    networks: 
+      - sail
+    restart: always
+  nginx:
+    image: nginx:1.18-alpine
+    volumes: 
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on: 
+      - api
+    networks: 
+      - sail
+    ports: 
+      - '80:80'
+networks: 
+  sail:
+    driver: bridge
+volumes:
+  sailmongo:
+    driver: local

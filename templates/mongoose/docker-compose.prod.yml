@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  api:
+    build: .
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL}
+    ports: 
+      - '4050'
+    env_file:
+      - .env
+    links: 
+      - mongo
+    depends_on: 
+      - mongo
+    volumes: 
+      - '.:/app'
+      - '/app/node_modules'
+    networks: 
+      - sail
+    restart: always
+    deploy:
+      replicas: 5
+    command: npm run build && npm run start

@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  test_api:
+    build: .
+    environment: 
+      NODE_ENV: test
+      DATABASE_URL: ${TEST_DATABASE_URL}
+    ports:
+      - 4200:4051
+    env_file:
+      - .env
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    networks:
+      - sail
+    container_name: test_api
+    command: npm run dev
+  api_test:
+    image: server_test_api:latest
+    environment: 
+      NODE_ENV: test
+      DATABASE_URL: ${TEST_DATABASE_URL}
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - test_api
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    networks:
+      - sail
+    command: npm run test

@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  api:
+    build: .
+    environment:
+      NODE_ENV: production
+    ports: 
+      - '4050'
+    env_file:
+      - .env
+    links: 
+      - mongo
+      - mysql
+    depends_on: 
+      - mysql
+      - mongo
+    volumes: 
+      - '.:/app'
+      - '/app/node_modules'
+    networks: 
+      - sail
+    restart: always
+    deploy:
+      replicas: 5
+    command: npm run migration && npm run build && npm run start
